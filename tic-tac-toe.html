@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tic Tac Toe | AngularJS</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="tic-tac-toe.css"/>
+    <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="tic-tac-toe.js"></script>
+  </head>
+  <body ng-app="TicTacToeApp">
+    <div class="container" ng-controller="TicTacToeController" ng-init="init()" style="width: 1320px;">
+      <div class="tic-tac-toe-board">
+        <div class="bord-row1">
+          <!-- [value, isDisabled] -->
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(0)" ng-disabled="bord_value_array[0][1]"><h3>{{bord_value_array[0][0]}}</h3></button>
+          <button type="button" class="btn btn-light mx-2 my-2" ng-click="switchSymbol(1)" ng-disabled="bord_value_array[1][1]"><h3>{{bord_value_array[1][0]}}</h3></button>
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(2)" ng-disabled="bord_value_array[2][1]"><h3>{{bord_value_array[2][0]}}</h3></button>
+        </div>
+        <div class="bord-row2 py-2">
+          <!-- [value, isDisabled] -->
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(3)" ng-disabled="bord_value_array[3][1]"><h3>{{bord_value_array[3][0]}}</h3></button>
+          <button type="button" class="btn btn-light mx-2 my-2" ng-click="switchSymbol(4)" ng-disabled="bord_value_array[4][1]"><h3>{{bord_value_array[4][0]}}</h3></button>
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(5)" ng-disabled="bord_value_array[5][1]"><h3>{{bord_value_array[5][0]}}</h3></button>
+        </div>
+        <div class="bord-row3">
+          <!-- [value, isDisabled] -->
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(6)" ng-disabled="bord_value_array[6][1]"><h3>{{bord_value_array[6][0]}}</h3></button>
+          <button type="button" class="btn btn-light mx-2 my-2" ng-click="switchSymbol(7)" ng-disabled="bord_value_array[7][1]"><h3>{{bord_value_array[7][0]}}</h3></button>
+          <button type="button" class="btn btn-light" ng-click="switchSymbol(8)" ng-disabled="bord_value_array[8][1]"><h3>{{bord_value_array[8][0]}}</h3></button>
+        </div>
+      </div>
+      <div class="status pt-4">
+        <h2>{{status}}</h2>
+      </div>
+    </div>
+  </body>
+</html>
