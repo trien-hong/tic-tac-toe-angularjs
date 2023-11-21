@@ -2,15 +2,27 @@ body {
     background-color: #D3D3D3;
 }
 
-.tic-tac-toe-board {
+.win_count {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 25vh;
+    margin-top: 20vh;
+}
+
+.tic_tac_toe_board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .status {
+    display: flex;
+    justify-content: center;
+}
+
+.reset {
     display: flex;
     justify-content: center;
 }

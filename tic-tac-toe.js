@@ -8,9 +8,22 @@ app.controller('TicTacToeController', function($scope) {
     ["*", false], ["*", false], ["*", false],
     ["*", false], ["*", false], ["*", false]
   ];
+  $scope.player1_win_count = 0;
+  $scope.player2_win_count = 0;
   $scope.status = "Current Player: 1 (X)";
   $scope.player_turn = 0;
-  $scope.isDisabled = true;
+  $scope.showResetButton = false;
+
+  $scope.resetBord = function() {
+    $scope.bord_value_array = [
+      ["*", false], ["*", false], ["*", false],
+      ["*", false], ["*", false], ["*", false],
+      ["*", false], ["*", false], ["*", false]
+    ];
+    $scope.status = "Current Player: 1 (X)";
+    $scope.player_turn = 0;
+    $scope.showResetButton = false;
+  }
   
   $scope.switchSymbol = function(i) {
     if ($scope.player_turn % 2 === 0) {
@@ -34,6 +47,7 @@ app.controller('TicTacToeController', function($scope) {
     if ($scope.player_turn === 9) {
       alert("It's a draw!");
       $scope.status = "It ended in a draw!";
+      $scope.showResetButton = true;
     } else {
       var winner_found = false;
       var winner = undefined;
@@ -113,11 +127,15 @@ app.controller('TicTacToeController', function($scope) {
     }
 
     if (winner === "X") {
-      alert("Congrats player 1 (X)! You have won the game!");
+      alert("Congrats player 1 (X), you have won the game!");
       $scope.status = "Player 1 won!";
+      $scope.player1_win_count = $scope.player1_win_count + 1;
     } else {
-      alert("Congrats player 2 (O)! You have won the game!");
+      alert("Congrats player 2 (O)! you have won the game!");
       $scope.status = "Player 2 won!";
+      $scope.player2_win_count = $scope.player2_win_count + 1;
     }
+
+    $scope.showResetButton = true;
   }
 });
