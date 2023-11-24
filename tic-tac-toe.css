@@ -12,7 +12,6 @@ body {
 
 .tic_tac_toe_board {
     font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
