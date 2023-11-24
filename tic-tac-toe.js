@@ -10,6 +10,7 @@ app.controller('TicTacToeController', function($scope) {
   ];
   $scope.player1_win_count = 0;
   $scope.player2_win_count = 0;
+  $scope.tie_count = 0;
   $scope.status = "Current Player: 1 (X)";
   $scope.player_turn = 0;
   $scope.showResetButton = false;
@@ -108,10 +109,10 @@ app.controller('TicTacToeController', function($scope) {
       } else if ($scope.bord_value_array[2][0] === "X" && $scope.bord_value_array[4][0] === "X" && $scope.bord_value_array[6][0] === "X") {
         winner_found = true;
         winner = "X";
-      } else if ($scope.bord_value_array[0][0] === "0" && $scope.bord_value_array[4][0] === "0" && $scope.bord_value_array[8][0] === "0") {
+      } else if ($scope.bord_value_array[0][0] === "O" && $scope.bord_value_array[4][0] === "O" && $scope.bord_value_array[8][0] === "O") {
         winner_found = true;
         winner = "O";
-      } else if ($scope.bord_value_array[2][0] === "0" && $scope.bord_value_array[4][0] === "0" && $scope.bord_value_array[6][0] === "0") {
+      } else if ($scope.bord_value_array[2][0] === "O" && $scope.bord_value_array[4][0] === "O" && $scope.bord_value_array[6][0] === "O") {
         winner_found = true;
         winner = "O";
       }
@@ -122,6 +123,7 @@ app.controller('TicTacToeController', function($scope) {
     } else if ($scope.player_turn === 9) {
       $scope.status = "It ended in a draw!";
       $scope.showResetButton = true;
+      $scope.tie_count = $scope.tie_count + 1;
 
       $scope.alertModal(
         "It's a draw!" // message

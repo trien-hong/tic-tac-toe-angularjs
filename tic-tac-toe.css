@@ -2,19 +2,36 @@ body {
     background-color: #D3D3D3;
 }
 
-.win_count {
+.counter {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-top: 20vh;
 }
 
 .tic_tac_toe_board {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.bord_row1, .bord_row2, .bord_row3 {
+    display: flex;
+    flex-direction: row;
+}
+
+.bord_row2 {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.square1, .square4, .square7 {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 }
 
 .status {
