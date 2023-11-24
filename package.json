@@ -1,0 +1,31 @@
+{
+  "name": "tic-tac-toe-angularjs",
+  "version": "1.0.0",
+  "description": "tic-tac-toe game using AngularJS",
+  "main": "tic-tac-toe.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trien-hong/tic-tac-toe-angularjs.git"
+  },
+  "author": "Trien Hong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trien-hong/tic-tac-toe-angularjs/issues"
+  },
+  "homepage": "https://github.com/trien-hong/tic-tac-toe-angularjs#readme",
+  "devDependencies": {
+    "git-scripts": "^0.6.4",
+    "surge": "^0.23.1"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./ --domain tic-tac-toe-game-th.surge.sh"
+    }
+  }
+}
