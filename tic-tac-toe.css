@@ -2,12 +2,24 @@ body {
     background-color: #D3D3D3;
 }
 
+.github {
+    display: flex;
+    justify-content: end;
+}
+
 .counter {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 5vh;
+}
+
+.player1_win_count, .tie_count, .player2_win_count {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .tic_tac_toe_board {
@@ -31,6 +43,12 @@ body {
 .square1, .square4, .square7 {
     border-left: 2px solid black;
     border-right: 2px solid black;
+}
+
+#square0, #square1, #square2, #square3, #square4, #square5, #square6, #square7, #square8 {
+    min-width: 80px;
+    min-height: 80px;
+    font-size: 35px;
 }
 
 .status {

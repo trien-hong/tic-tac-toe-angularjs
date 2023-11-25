@@ -1,7 +1,7 @@
 var app = angular.module('TicTacToeApp', []);
 
 app.controller('TicTacToeController', function($scope) {
-  // [value, isDisabled]
+  // $scope.bord_value_array[index][value, isDisabled, color]
   // i may switch it to array of objects [{"value": "*", "isDisabled": false, "color": "btn-light"}, ...]
   $scope.bord_value_array = [
     ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"],
@@ -17,7 +17,7 @@ app.controller('TicTacToeController', function($scope) {
 
   $scope.resetBord = function() {
     $scope.confirmModal(
-      "Are you sure you want to reset the bord?", // message
+      "Are you sure you want to reset the bord? This won't affect the win or tie counter.", // message
       "resetBordConfirmed" // function
     );
   };
@@ -35,13 +35,13 @@ app.controller('TicTacToeController', function($scope) {
   
   $scope.switchSymbol = function(i) {
     if ($scope.player_turn % 2 === 0) {
-      // player 1 turn
+      // player 2 turn
       $scope.bord_value_array[i][0] = "X";
       $scope.bord_value_array[i][1] = true
       $scope.player_turn = $scope.player_turn + 1;
       $scope.status = "Current Player: 2 (O)";
     } else {
-      // player 2 turn
+      // player 1 turn
       $scope.bord_value_array[i][0] = "O";
       $scope.bord_value_array[i][1] = true
       $scope.player_turn = $scope.player_turn + 1;
@@ -136,6 +136,10 @@ app.controller('TicTacToeController', function($scope) {
       $scope.status = "It ended in a draw!";
       $scope.showResetButton = true;
       $scope.tie_count = $scope.tie_count + 1;
+
+      for (var i = 0; i < $scope.bord_value_array.length; i++) {
+        $scope.bord_value_array[i][2] = "btn-warning";
+      }
       
       $scope.alertModal(
         "It's a draw!" // message
@@ -198,6 +202,12 @@ app.controller('TicTacToeController', function($scope) {
 
     for (var i = 0; i < location.length; i++) {
       $scope.bord_value_array[location[i]][2] = "btn-success";
+    }
+
+    for (var i = 0; i < $scope.bord_value_array.length; i++) {
+      if ($scope.bord_value_array[i][0] !== winner && $scope.bord_value_array[i][0] !== "*") {
+        $scope.bord_value_array[i][2] = "btn-danger";
+      }
     }
 
     if (winner === "X") {
