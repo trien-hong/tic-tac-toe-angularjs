@@ -158,7 +158,7 @@ app.controller('TicTacToeController', function($scope) {
       for (var i = 0; i < 3; i++) {
         if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
           location.push(d, e);
-          $scope.foundWinner(winner, location);
+          break;
         }
 
         d = d + 1;
@@ -171,7 +171,7 @@ app.controller('TicTacToeController', function($scope) {
       for (var i = 0; i < 3; i++) {
         if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
           location.push(d, e);
-          $scope.foundWinner(winner, location);
+          break;
         }
 
         d = d + 1;
@@ -184,15 +184,15 @@ app.controller('TicTacToeController', function($scope) {
       for (var i = 0; i < 3; i++) {
         if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
           location.push(d, e);
-          $scope.foundWinner(winner, location);
+          break;
         }
 
         d = d + 1;
         e = e + 1;
       }
-    } else {
-      $scope.foundWinner(winner, location);
     }
+
+    $scope.foundWinner(winner, location);
   };
 
   $scope.foundWinner = function(winner, location) {
