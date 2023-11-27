@@ -1,9 +1,9 @@
 var app = angular.module('TicTacToeApp', []);
 
 app.controller('TicTacToeController', function($scope) {
-  // $scope.bord_value_array[index][value, isDisabled, color]
+  // $scope.board_value_array[index][value, isDisabled, color]
   // i may switch it to array of objects [{"value": "*", "isDisabled": false, "color": "btn-light"}, ...]
-  $scope.bord_value_array = [
+  $scope.board_value_array = [
     ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"],
     ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"],
     ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"]
@@ -15,15 +15,15 @@ app.controller('TicTacToeController', function($scope) {
   $scope.player_turn = 0;
   $scope.showResetButton = false;
 
-  $scope.resetBord = function() {
+  $scope.resetBoard = function() {
     $scope.confirmModal(
-      "Are you sure you want to reset the bord? This won't affect the win or tie counter.", // message
-      "resetBordConfirmed" // function
+      "Are you sure you want to reset the board? This won't affect the win or tie counter.", // message
+      "resetBoardConfirmed" // function
     );
   };
 
-  $scope.resetBordConfirmed = function() {
-    $scope.bord_value_array = [
+  $scope.resetBoardConfirmed = function() {
+    $scope.board_value_array = [
       ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"],
       ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"],
       ["*", false, "btn-light"], ["*", false, "btn-light"], ["*", false, "btn-light"]
@@ -31,27 +31,31 @@ app.controller('TicTacToeController', function($scope) {
     $scope.status = "Current Player: 1 (X)";
     $scope.player_turn = 0;
     $scope.showResetButton = false;
+
+    $scope.alertToast(
+      "The board has been reset! Player 1 (X), it's now your turn again." // message
+    );
   };
   
   $scope.switchSymbol = function(i) {
     if ($scope.player_turn % 2 === 0) {
       // player 2 turn
-      $scope.bord_value_array[i][0] = "X";
-      $scope.bord_value_array[i][1] = true
+      $scope.board_value_array[i][0] = "X";
+      $scope.board_value_array[i][1] = true
       $scope.player_turn = $scope.player_turn + 1;
       $scope.status = "Current Player: 2 (O)";
+      $scope.checkWinner("2 (O)");
     } else {
       // player 1 turn
-      $scope.bord_value_array[i][0] = "O";
-      $scope.bord_value_array[i][1] = true
+      $scope.board_value_array[i][0] = "O";
+      $scope.board_value_array[i][1] = true
       $scope.player_turn = $scope.player_turn + 1;
       $scope.status = "Current Player: 1 (X)";
+      $scope.checkWinner("1 (X)");
     }
-
-    $scope.checkWinner();
   };
 
-  $scope.checkWinner = function() {
+  $scope.checkWinner = function(player) {
     var winner_found = false;
     var winner = undefined;
     var location = [];
@@ -66,12 +70,12 @@ app.controller('TicTacToeController', function($scope) {
       c = 2;
 
       for (var i = 0; i < 3; i++) {
-        if ($scope.bord_value_array[a][0] === "X" && $scope.bord_value_array[b][0] === "X" && $scope.bord_value_array[c][0] === "X") {
+        if ($scope.board_value_array[a][0] === "X" && $scope.board_value_array[b][0] === "X" && $scope.board_value_array[c][0] === "X") {
           winner_found = true;
           winner = "X";
           location.push(a, b, c);
           break;
-        } else if ($scope.bord_value_array[a][0] === "O" && $scope.bord_value_array[b][0] === "O" && $scope.bord_value_array[c][0] === "O") {
+        } else if ($scope.board_value_array[a][0] === "O" && $scope.board_value_array[b][0] === "O" && $scope.board_value_array[c][0] === "O") {
           winner_found = true;
           winner = "O";
           location.push(a, b, c);
@@ -91,12 +95,12 @@ app.controller('TicTacToeController', function($scope) {
       c = 6;
 
       for (var i = 0; i < 3; i++) {
-        if ($scope.bord_value_array[a][0] === "X" && $scope.bord_value_array[b][0] === "X" && $scope.bord_value_array[c][0] === "X") {
+        if ($scope.board_value_array[a][0] === "X" && $scope.board_value_array[b][0] === "X" && $scope.board_value_array[c][0] === "X") {
           winner_found = true;
           winner = "X";
           location.push(a, b, c);
           break;
-        } else if ($scope.bord_value_array[a][0] === "O" && $scope.bord_value_array[b][0] === "O" && $scope.bord_value_array[c][0] === "O") {
+        } else if ($scope.board_value_array[a][0] === "O" && $scope.board_value_array[b][0] === "O" && $scope.board_value_array[c][0] === "O") {
           winner_found = true;
           winner = "O";
           location.push(a, b, c);
@@ -111,17 +115,17 @@ app.controller('TicTacToeController', function($scope) {
     
     if (winner_found === false) {
       // check diagonals
-      if (($scope.bord_value_array[0][0] === "X" && $scope.bord_value_array[4][0] === "X" && $scope.bord_value_array[8][0] === "X") ||
-          ($scope.bord_value_array[0][0] === "O" && $scope.bord_value_array[4][0] === "O" && $scope.bord_value_array[8][0] === "O")) {
+      if (($scope.board_value_array[0][0] === "X" && $scope.board_value_array[4][0] === "X" && $scope.board_value_array[8][0] === "X") ||
+          ($scope.board_value_array[0][0] === "O" && $scope.board_value_array[4][0] === "O" && $scope.board_value_array[8][0] === "O")) {
           winner_found = true;
-          winner = $scope.bord_value_array[0][0];
+          winner = $scope.board_value_array[0][0];
           location.push(0, 4, 8);
       }
 
-      if (($scope.bord_value_array[2][0] === "X" && $scope.bord_value_array[4][0] === "X" && $scope.bord_value_array[6][0] === "X") ||
-          ($scope.bord_value_array[2][0] === "O" && $scope.bord_value_array[4][0] === "O" && $scope.bord_value_array[6][0] === "O")) {
+      if (($scope.board_value_array[2][0] === "X" && $scope.board_value_array[4][0] === "X" && $scope.board_value_array[6][0] === "X") ||
+          ($scope.board_value_array[2][0] === "O" && $scope.board_value_array[4][0] === "O" && $scope.board_value_array[6][0] === "O")) {
           winner_found = true;
-          winner = $scope.bord_value_array[2][0];
+          winner = $scope.board_value_array[2][0];
           location.push(2, 4, 6);
       }
     }
@@ -133,16 +137,20 @@ app.controller('TicTacToeController', function($scope) {
         $scope.foundWinner(winner, location);
       }
     } else if ($scope.player_turn === 9) {
-      $scope.status = "It ended in a draw!";
+      $scope.status = "The game ended in a draw!";
       $scope.showResetButton = true;
       $scope.tie_count = $scope.tie_count + 1;
 
-      for (var i = 0; i < $scope.bord_value_array.length; i++) {
-        $scope.bord_value_array[i][2] = "btn-warning";
+      for (var i = 0; i < $scope.board_value_array.length; i++) {
+        $scope.board_value_array[i][2] = "btn-warning";
       }
       
       $scope.alertModal(
-        "It's a draw!" // message
+        "The game ended in a draw! It's a tie." // message
+      );
+    } else {
+      $scope.alertToast(
+        "Player " + player + ", it's now your turn. Go ahead and click on an available square." // message
       );
     }
   };
@@ -156,7 +164,7 @@ app.controller('TicTacToeController', function($scope) {
       e = 6;
 
       for (var i = 0; i < 3; i++) {
-        if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
+        if ($scope.board_value_array[d][0] === winner && $scope.board_value_array[e][0] === winner) {
           location.push(d, e);
           break;
         }
@@ -169,7 +177,7 @@ app.controller('TicTacToeController', function($scope) {
       e = 6;
 
       for (var i = 0; i < 3; i++) {
-        if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
+        if ($scope.board_value_array[d][0] === winner && $scope.board_value_array[e][0] === winner) {
           location.push(d, e);
           break;
         }
@@ -182,7 +190,7 @@ app.controller('TicTacToeController', function($scope) {
       e = 3;
 
       for (var i = 0; i < 3; i++) {
-        if ($scope.bord_value_array[d][0] === winner && $scope.bord_value_array[e][0] === winner) {
+        if ($scope.board_value_array[d][0] === winner && $scope.board_value_array[e][0] === winner) {
           location.push(d, e);
           break;
         }
@@ -196,17 +204,17 @@ app.controller('TicTacToeController', function($scope) {
   };
 
   $scope.foundWinner = function(winner, location) {
-    for (var i = 0; i < $scope.bord_value_array.length; i++) {
-      $scope.bord_value_array[i][1] = true;
+    for (var i = 0; i < $scope.board_value_array.length; i++) {
+      $scope.board_value_array[i][1] = true;
     }
 
     for (var i = 0; i < location.length; i++) {
-      $scope.bord_value_array[location[i]][2] = "btn-success";
+      $scope.board_value_array[location[i]][2] = "btn-success";
     }
 
-    for (var i = 0; i < $scope.bord_value_array.length; i++) {
-      if ($scope.bord_value_array[i][0] !== winner && $scope.bord_value_array[i][0] !== "*") {
-        $scope.bord_value_array[i][2] = "btn-danger";
+    for (var i = 0; i < $scope.board_value_array.length; i++) {
+      if ($scope.board_value_array[i][0] !== winner && $scope.board_value_array[i][0] !== "*") {
+        $scope.board_value_array[i][2] = "btn-danger";
       }
     }
 
@@ -225,6 +233,18 @@ app.controller('TicTacToeController', function($scope) {
     $scope.alertModal(
       message // message
     );
+  };
+
+  $scope.alertToast = function(message) {
+    $scope.toast("Tic-tac-toe", "Just now", message);
+  };
+
+  $scope.toast = function(title, subtitle, message) {
+    $scope.toastTitle = title;
+    $scope.toastSubtitle = subtitle;
+    $scope.toastMessage = message;
+    $('#toast').toast('show');
+    $('#modal').modal('hide');
   };
 
   $scope.confirmModal = function(message, confirmFunctionVariable, confirmParameterVariable) {
@@ -249,5 +269,6 @@ app.controller('TicTacToeController', function($scope) {
     $scope.modalMessage = message;
     $scope.modalClass = modalClass;
     $('#modal').modal('show');
+    $('#toast').toast('hide');
   };
 });

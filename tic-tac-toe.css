@@ -30,12 +30,12 @@ body {
     align-items: center;
 }
 
-.bord_row1, .bord_row2, .bord_row3 {
+.board_row1, .board_row2, .board_row3 {
     display: flex;
     flex-direction: row;
 }
 
-.bord_row2 {
+.board_row2 {
     border-top: 2px solid black;
     border-bottom: 2px solid black;
 }
