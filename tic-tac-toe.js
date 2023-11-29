@@ -1,6 +1,7 @@
 var app = angular.module('TicTacToeApp', []);
 
 app.controller('TicTacToeController', function($scope) {
+  $scope.theme_color = "dark";
   // $scope.board_value_array[index][value, isDisabled, color]
   // i may switch it to array of objects [{"value": "*", "isDisabled": false, "color": "btn-light"}, ...]
   $scope.board_value_array = [
@@ -14,6 +15,15 @@ app.controller('TicTacToeController', function($scope) {
   $scope.status = "Current Player: 1 (X)";
   $scope.player_turn = 0;
   $scope.showResetButton = false;
+  $('body').css({'background-color': '#8A8A8A'}); 
+
+  $scope.darkMode = function() {
+    $('body').css('background-color', '#8A8A8A');
+  };
+
+  $scope.lightMode = function() {
+    $('body').css('background-color', '#F6F6F6');
+  };
 
   $scope.resetBoard = function() {
     $scope.confirmModal(
@@ -205,14 +215,17 @@ app.controller('TicTacToeController', function($scope) {
 
   $scope.foundWinner = function(winner, location) {
     for (var i = 0; i < $scope.board_value_array.length; i++) {
+      // disable all buttons/squares
       $scope.board_value_array[i][1] = true;
     }
 
     for (var i = 0; i < location.length; i++) {
+      // highlight the winner's row/column/diagonal(s) in green
       $scope.board_value_array[location[i]][2] = "btn-success";
     }
 
     for (var i = 0; i < $scope.board_value_array.length; i++) {
+      // highlight the loser in red
       if ($scope.board_value_array[i][0] !== winner && $scope.board_value_array[i][0] !== "*") {
         $scope.board_value_array[i][2] = "btn-danger";
       }

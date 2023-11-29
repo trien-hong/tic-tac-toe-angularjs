@@ -12,10 +12,23 @@
   </head>
   <body ng-app="TicTacToeApp">
     <div ng-controller="TicTacToeController" ng-init="init()">
-      <div class="github">
-        <a class="btn btn-light mt-3 me-3" target="_blank" rel="noopener noreferrer" href="https://github.com/trien-hong/tic-tac-toe-angularjs" role="button" title="GitHub Repository">
-          <img class="mb-1" src="images/github.svg" width="50" height="50"/>
-        </a>
+      <div class="top_buttons">
+        <div class="left_buttons mt-3 ms-3">
+          <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" checked>
+          <label class="btn btn-primary me-2" for="option1" ng-click="darkMode()" title="Change to dark mode"><img class="me-2" src="images/moon-stars.svg" width="30" height="30"/>Dark Mode</label>
+          <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+          <label class="btn btn-primary" for="option2" ng-click="lightMode()" title="Change to light mode"><img class="me-2" src="images/sun.svg" width="30" height="30"/>Light Mode</label>
+        </div>
+        <div class="right_buttons mt-3 me-3">
+          <a class="btn btn-primary me-2" target="_blank" rel="noopener noreferrer" href="https://en.wikipedia.org/wiki/Tic-tac-toe" role="button" title="How To Play">
+            <img class="me-2" src="images/question-circle.svg" width="30" height="30"/>
+            How To Play
+          </a>
+          <a class="btn btn-primary" target="_blank" rel="noopener noreferrer" href="https://github.com/trien-hong/tic-tac-toe-angularjs" role="button" title="GitHub Repository">
+            <img class="me-2" src="images/github.svg" width="30" height="30"/>
+            GitHub Repository
+          </a>
+        </div>
       </div>
       <div class="counter">
         <div class="player1_win_count" title="Player 1's win count">
@@ -78,10 +91,10 @@
       <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
           <div class="toast-header">
-            <img src="images/tic-tac-toe.svg" width="16" height="16" class="rounded me-2">
+            <img src="images/tic-tac-toe.svg" width="16" height="16" class="toast_icon me-2">
             <strong class="me-auto">{{toastTitle}}</strong>
             <b><u><small>{{toastSubtitle}}</small></u></b>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="Close alert"></button>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="CLOSE ALERT"></button>
           </div>
           <div class="toast-body">
             <b><p class="mb-0 pb-0">{{toastMessage}}</p></b>

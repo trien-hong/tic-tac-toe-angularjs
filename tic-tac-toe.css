@@ -1,10 +1,7 @@
-body {
-    background-color: #D3D3D3;
-}
-
-.github {
+.top_buttons {
     display: flex;
-    justify-content: end;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .counter {
@@ -12,7 +9,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 .player1_win_count, .tie_count, .player2_win_count {
@@ -49,6 +46,8 @@ body {
     min-width: 80px;
     min-height: 80px;
     font-size: 35px;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 10px #4F4F4F;
 }
 
 .status {
@@ -59,4 +58,23 @@ body {
 .reset {
     display: flex;
     justify-content: center;
+}
+
+.toast_icon {
+    border: 1px solid gray;
+    background-color: white;
+}
+
+.toast-header {
+    background-color: wheat;
+}
+
+.toast-body {
+    background-color: wheat;
+}
+
+.toast {
+    --bs-border-color-translucent: black;
+    --bs-toast-border-color: unset;
+    --bs-toast-header-color: black;
 }
