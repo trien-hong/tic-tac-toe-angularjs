@@ -1,7 +1,6 @@
 var app = angular.module('TicTacToeApp', []);
 
 app.controller('TicTacToeController', function($scope) {
-  $scope.theme_color = "dark";
   // $scope.board_value_array[index][value, isDisabled, color]
   // i may switch it to array of objects [{"value": "*", "isDisabled": false, "color": "btn-light"}, ...]
   $scope.board_value_array = [

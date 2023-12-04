@@ -4,7 +4,8 @@ Tic-tac-toe game using AngularJS
 
 Deployment
 ==========
-Deployed to surge:<br>[https://tic-tac-toe-game-th.surge.sh/](https://tic-tac-toe-game-th.surge.sh/)
+Deployed to surge:<br>[https://tic-tac-toe-game-th.surge.sh/](https://tic-tac-toe-game-th.surge.sh/)<br><br>
+You may see a 503 Service Unavailable. That's likely due to surge's servers being overloaded.
 
 Alternatives
 ============
