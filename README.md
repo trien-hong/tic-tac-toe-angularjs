@@ -5,16 +5,16 @@ Tic-tac-toe game using AngularJS
 Deployment
 ==========
 Deployed to surge:<br>
-[https://tic-tac-toe-game-th.surge.sh/](https://tic-tac-toe-game-th.surge.sh/)<br><br>
-You may see a 503 Service Unavailable. That's likely due to surge's servers being overloaded.
+[https://tic-tac-toe-game-th.surge.sh/](https://tic-tac-toe-game-th.surge.sh/)
 
-JSFiddle if you want to make changes:<br>
-[https://jsfiddle.net/trien_hong/cbs067Lt/](https://jsfiddle.net/trien_hong/cbs067Lt/)<br><br>
-I've added this project to JSFiddle. You may visit it and change it to your liking.
+You may see a 503 Service Unavailable. That's likely due to surge's servers being overloaded.
 
 Alternatives
 ============
-You can also download the project and run index.html in a web browser
+I've added this project to JSFiddle. You may visit it and change it to your liking.
+[https://jsfiddle.net/trien_hong/cbs067Lt/](https://jsfiddle.net/trien_hong/cbs067Lt/)
+
+You can also download this project and run index.html in a web browser
 
 Icon
 ====
